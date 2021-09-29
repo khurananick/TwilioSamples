@@ -11,7 +11,7 @@ exports.handler = async function(context, event, callback) {
   // if no agents pick up the phone, we simply play a message to the caller to ask 
   // them to try again later. this can be used to send the caller to voicemail as well.
   async function handleNoAgentsAvailable() {
-    const call = await client.calls(oCallSid)
+    const call = await client.calls(event.originCallSid)
       .update({
         twiml: `<Response><Say>We're sorry, no one is available to take your call at this time. Please try again later.</Say></Response>`,
       });
