@@ -1,6 +1,6 @@
 exports.handler = async function(context, event, callback) {
     const client = context.getTwilioClient();
-    const agentNum = "+1408XXXXXX"; // Number to connect the call to.
+    const agentNum = event.RingTo; // Number to connect the call to.
     const userNum = event.From; // Number the call is coming from.
     const callerId = event.To; // Number to show when connecting call to agentNum.
     
