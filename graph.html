@@ -37,7 +37,7 @@
   <script>
     (async function() {
       if(Get.person_id) {
-        const response = await fetch('/cmdbuild/services/rest/v3/classes/Person/cards/${Get.person_id}/relations');
+        const response = await fetch(`/cmdbuild/services/rest/v3/classes/Person/cards/${Get.person_id}/relations`);
         const json = await response.json();
         console.log(json);
       }
