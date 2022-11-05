@@ -1,0 +1,14 @@
+
+<html>
+<head></head>
+<body>
+<script>
+(async function() {
+	const response = await fetch('/cmdbuild/services/rest/v3/classes/Person/cards/2464237/relations');
+	const json = await response.json();
+	console.log(json);
+})();
+//CMDBuild-Authorization
+</script>
+</body>
+</html>
