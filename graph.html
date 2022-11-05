@@ -30,17 +30,29 @@
   </script>
 </head>
 <body>
+  <div>
+    <ul id="people">
+    </ul>
+  </div>
   <script>
     (async function() {
       if(Get.person_id) {
-        const response = await fetch('/cmdbuild/services/rest/v3/classes/Person/cards/2464237/relations');
+        const response = await fetch('/cmdbuild/services/rest/v3/classes/Person/cards/${Get.person_id}/relations');
         const json = await response.json();
         console.log(json);
       }
       else {
         const response = await fetch('/cmdbuild/services/rest/v3/classes/Person/cards');
         const json = await response.json();
-        console.log(json);
+        const ul = document.getElementById("people");
+        for(const item of json.data) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = `/cmdbuild/ui/graph.html?person_id=${item._id}`;
+          a.textContent = `${item.last_name}, ${item.first_name}`;
+          li.append(a);
+          ul.append(li);
+        }
       }
     })();
   </script>
