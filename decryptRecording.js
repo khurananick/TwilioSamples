@@ -110,7 +110,7 @@ const decryptFile = (audioStream, cek, iv, callback) => {
 // for example, http://domain.com/decryptRecording?recordingSid=RE3c4c16XXX
 exports.handler = async function(context, event, callback) {
     const response = new Twilio.Response();
-    response.appendHeader('Content-Type', 'audio/mpeg');
+    response.appendHeader('Content-Type', 'audio/wav');
     response.appendHeader('Access-Control-Allow-Origin', '*');
 
     const client = context.getTwilioClient();
@@ -118,7 +118,7 @@ exports.handler = async function(context, event, callback) {
 
     if(recording.mediaUrl) {
         const axios = require("axios");
-        const media = await axios.get(recording.mediaUrl, {
+        const media = await axios.get(recording.mediaUrl + ".wav", {
             responseType: 'arraybuffer',
             auth: {
                 username: context.ACCOUNT_SID,
